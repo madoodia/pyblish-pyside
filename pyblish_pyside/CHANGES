@@ -1,6 +1,7 @@
-Changelog
-==============
+===============================
+Changelog: Version Information
+===============================
 
-version 0.0.1
---------------	
-- Start a basic window in pyside
+0.0.1 	(01-02-2016)
+
+		Initial Release.

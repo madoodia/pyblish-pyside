@@ -34,8 +34,9 @@ class PyblishGUI(QDialog):
 def getMainWindow():
     mainWindow = QApplication.activeWindow()
     while True:
-        if mainWindow.parent():
-            mainWindow = mainWindow.parent()
+        lastWin = mainWindow.parent()
+        if lastWin:
+            mainWindow = lastWin
         else:
             break
     return mainWindow
