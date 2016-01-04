@@ -17,11 +17,17 @@ class PyblishGUI(QtGui.QDialog):
 
     """The main Window of Pyblish GUI [is not Singleton]"""
 
+    singleton = None
+
     def __init__(self, parent=None):
         super(PyblishGUI, self).__init__(parent)
 
         self.resize(400, 400)
         self.setWindowTitle("Pyblish")
+
+    def closeEvent(self, event):
+        self.close()
+
 
 def getMainWindow():
     mainWindow = QtGui.QApplication.activeWindow()
@@ -35,5 +41,10 @@ def getMainWindow():
 
 
 def show():
-    win = PyblishGUI(parent=getMainWindow())
-    win.show()
+    if PyblishGUI.singleton is not None:
+        PyblishGUI.singleton.pos()
+        PyblishGUI.singleton.show()
+    else:
+        win = PyblishGUI(parent=getMainWindow())
+        PyblishGUI.singleton = win
+        win.show()
